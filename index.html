@@ -479,7 +479,7 @@
                 <span class="arrow">↗</span>
               </a>
 
-              <a class="btn" href="#">
+              <a class="btn" href="./Natalia_Guerra_cv.en.pdf" id="cvLink">
                 <span class="left">
                   <svg class="ico icoMuted" aria-hidden="true"><use href="#i-file"></use></svg>
                   <span class="label" id="cvText">CV (PDF)</span>
@@ -556,6 +556,7 @@ Profesional disciplinada con liderazgo comprobado y nivel de inglés C1.`;
       igText: document.getElementById("igText"),
       ytText: document.getElementById("ytText"),
       cvText: document.getElementById("cvText"),
+      cvLink: document.getElementById("cvLink"),
       contactText: document.getElementById("contactText"),
       footerLeft: document.getElementById("footerLeft"),
       tag1: document.getElementById("tag1"),
@@ -584,6 +585,8 @@ Profesional disciplinada con liderazgo comprobado y nivel de inglés C1.`;
         els.tag4.textContent = d.tags[3];
 
         els.bioText.textContent = d.bio;
+
+        els.cvLink.href = lang === "en" ? "Natalia_Guerra_cv.en.pdf" : "Natalia_Guerra_cv.es.pdf";
 
         els.btnEN.setAttribute("aria-pressed", String(lang === "en"));
         els.btnES.setAttribute("aria-pressed", String(lang === "es"));
