@@ -445,7 +445,7 @@
             <div class="videoFrame">
               <!-- Privacy-enhanced YouTube embed domain -->
               <iframe
-                src="https://www.youtube-nocookie.com/embed/weABmbzKfh8"
+                src="https://www.youtube-nocookie.com/embed/czun4LdaMXQ"
                 title="Natalia Guerra — Video"
                 loading="lazy"
                 referrerpolicy="strict-origin-when-cross-origin"
@@ -467,6 +467,14 @@
                 <span class="left">
                   <svg class="ico icoMuted" aria-hidden="true"><use href="#i-instagram"></use></svg>
                   <span class="label" id="igText">Instagram</span>
+                </span>
+                <span class="arrow">↗</span>
+              </a>
+
+              <a class="btn" href="https://www.youtube.com/@NataliaGuerraMusic" target="_blank" rel="noreferrer">
+                <span class="left">
+                  <svg class="ico icoMuted" aria-hidden="true"><use href="#i-youtube"></use></svg>
+                  <span class="label" id="ytText">YouTube</span>
                 </span>
                 <span class="arrow">↗</span>
               </a>
@@ -509,32 +517,34 @@ Disciplined professional with proven leadership skills and C1 English fluency.`;
 Experiencia en showband de alta energía (repertorio 150+), interpretación con click tracks/secuencias y adaptación a audiencias internacionales. 
 Profesional disciplinada con liderazgo comprobado y nivel de inglés C1.`;
 
-    const copy = {
-      en: {
-        subtitle: "Professional Pianist · Bogotá",
-        linksKicker: "Links",
-        bioKicker: "Profile",
-        videoKicker: "Video",
-        ig: "Instagram",
-        cv: "CV (PDF)",
-        contact: "Contact / Contacto",
-        footer: "Available for concerts, sessions & collaborations.",
-        tags: ["Classical", "Jazz improv", "Showband", "C1 English"],
-        bio: bioEN
-      },
-      es: {
-        subtitle: "Pianista profesional · Bogotá",
-        linksKicker: "Enlaces",
-        bioKicker: "Perfil",
-        videoKicker: "Video",
-        ig: "Instagram",
-        cv: "Hoja de vida (PDF)",
-        contact: "Contacto / Contact",
-        footer: "Disponible para conciertos, sesiones y colaboraciones.",
-        tags: ["Clásico", "Impro jazz", "Showband", "Inglés C1"],
-        bio: bioES
-      }
-    };
+      const copy = {
+        en: {
+          subtitle: "Professional Pianist · Bogotá",
+          linksKicker: "Links",
+          bioKicker: "Profile",
+          videoKicker: "Video",
+          ig: "Instagram",
+          yt: "YouTube",
+          cv: "CV (PDF)",
+          contact: "Contact / Contacto",
+          footer: "Available for concerts, sessions & collaborations.",
+          tags: ["Classical", "Jazz improv", "Showband", "C1 English"],
+          bio: bioEN
+        },
+        es: {
+          subtitle: "Pianista profesional · Bogotá",
+          linksKicker: "Enlaces",
+          bioKicker: "Perfil",
+          videoKicker: "Video",
+          ig: "Instagram",
+          yt: "YouTube",
+          cv: "Hoja de vida (PDF)",
+          contact: "Contacto / Contact",
+          footer: "Disponible para conciertos, sesiones y colaboraciones.",
+          tags: ["Clásico", "Impro jazz", "Showband", "Inglés C1"],
+          bio: bioES
+        }
+      };
 
     const els = {
       btnEN: document.getElementById("btnEN"),
@@ -544,6 +554,7 @@ Profesional disciplinada con liderazgo comprobado y nivel de inglés C1.`;
       bioKicker: document.getElementById("bioKicker"),
       videoKicker: document.getElementById("videoKicker"),
       igText: document.getElementById("igText"),
+      ytText: document.getElementById("ytText"),
       cvText: document.getElementById("cvText"),
       contactText: document.getElementById("contactText"),
       footerLeft: document.getElementById("footerLeft"),
@@ -554,28 +565,29 @@ Profesional disciplinada con liderazgo comprobado y nivel de inglés C1.`;
       bioText: document.getElementById("bioText"),
     };
 
-    function setLang(lang){
-      const d = copy[lang];
-      document.documentElement.lang = lang;
-      els.subtitle.textContent = d.subtitle;
-      els.linksKicker.textContent = d.linksKicker;
-      els.bioKicker.textContent = d.bioKicker;
-      els.videoKicker.textContent = d.videoKicker;
-      els.igText.textContent = d.ig;
-      els.cvText.textContent = d.cv;
-      els.contactText.textContent = d.contact;
-      els.footerLeft.textContent = d.footer;
+      function setLang(lang){
+        const d = copy[lang];
+        document.documentElement.lang = lang;
+        els.subtitle.textContent = d.subtitle;
+        els.linksKicker.textContent = d.linksKicker;
+        els.bioKicker.textContent = d.bioKicker;
+        els.videoKicker.textContent = d.videoKicker;
+        els.igText.textContent = d.ig;
+        els.ytText.textContent = d.yt;
+        els.cvText.textContent = d.cv;
+        els.contactText.textContent = d.contact;
+        els.footerLeft.textContent = d.footer;
 
-      els.tag1.textContent = d.tags[0];
-      els.tag2.textContent = d.tags[1];
-      els.tag3.textContent = d.tags[2];
-      els.tag4.textContent = d.tags[3];
+        els.tag1.textContent = d.tags[0];
+        els.tag2.textContent = d.tags[1];
+        els.tag3.textContent = d.tags[2];
+        els.tag4.textContent = d.tags[3];
 
-      els.bioText.textContent = d.bio;
+        els.bioText.textContent = d.bio;
 
-      els.btnEN.setAttribute("aria-pressed", String(lang === "en"));
-      els.btnES.setAttribute("aria-pressed", String(lang === "es"));
-    }
+        els.btnEN.setAttribute("aria-pressed", String(lang === "en"));
+        els.btnES.setAttribute("aria-pressed", String(lang === "es"));
+      }
 
     els.btnEN.addEventListener("click", () => setLang("en"));
     els.btnES.addEventListener("click", () => setLang("es"));
