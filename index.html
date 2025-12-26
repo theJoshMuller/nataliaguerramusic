@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Natalia Guerra — Pianist</title>
+  <meta name="description" content="Natalia Guerra — professional pianist. Links, CV, video, and contact." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --accent: #C01E2E;
+      --bg0: #07080A;
+      --bg1: #0F1116;
+
+      --panel: rgba(17,18,22,.72);
+      --stroke: rgba(243,241,236,.10);
+
+      --text: #F3F1EC;
+      --muted: rgba(243,241,236,.74);
+
+      --woodA: rgba(154,123,92,.14);
+      --woodB: rgba(154,123,92,.08);
+
+      --radius: 22px;
+      --shadow: 0 28px 80px rgba(0,0,0,.62);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 560px at 12% 10%, rgba(192,30,46,.20), transparent 60%),
+        radial-gradient(820px 520px at 85% 18%, rgba(154,123,92,.18), transparent 58%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
+    }
+
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.10;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+    }
+
+    .wrap{
+      min-height:100%;
+      display:flex;
+      justify-content:center;
+      padding: 44px 18px;
+    }
+
+    .profile{
+      width: min(980px, 100%);
+      border-radius: calc(var(--radius) + 6px);
+      border: 1px solid rgba(243,241,236,.10);
+      background: linear-gradient(180deg, rgba(17,18,22,.70), rgba(17,18,22,.55));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+
+    /* HERO */
+    /* HERO: tight layout, no extra black space */
+    .hero{
+      position:relative;
+      background: transparent; /* removed background to eliminate extra black */
+      border-bottom: 1px solid rgba(243,241,236,.10);
+      padding: 18px 18px 22px; /* adjusted bottom padding */
+    }
+
+    /* Frame holds ONLY the image + topbar */
+    .heroFrame{
+      position:relative;
+      border-radius: calc(var(--radius) + 2px);
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(900px 520px at 15% 0%, rgba(192,30,46,.20), transparent 60%),
+        radial-gradient(900px 560px at 85% 10%, rgba(154,123,92,.18), transparent 62%),
+        linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65));
+      box-shadow: 0 18px 55px rgba(0,0,0,.55);
+    }
+
+    /* Keep the entire portrait visible: contain (no cropping) */
+    .heroFrame img{
+      width: 100%;
+      height: min(72vh, 620px);
+      object-fit: contain;
+      display:block;
+      background: #0b0c10;
+    }
+
+    /* Name block: NO pill, just clean text below image */
+    .nameCard{
+      margin-top: 18px;
+      padding: 0; /* no padding */
+      background: transparent; /* no background */
+      border: 0; /* no border */
+    }
+
+    .nameCard h1{
+      margin:0;
+      font-family: "Playfair Display", ui-serif, Georgia, serif;
+      font-weight: 700;
+      letter-spacing: .2px;
+      font-size: clamp(34px, 4.6vw, 52px);
+      line-height: 1.08;
+    }
+
+    .nameCard .subtitle{
+      margin: 10px 0 0 0;
+      color: rgba(243,241,236,.84);
+      font-weight: 700;
+      letter-spacing: .3px;
+      font-size: 16px;
+    }
+
+    .topbar{
+      position:absolute;
+      inset: 16px 16px auto 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      z-index:2;
+    }
+
+    .badge{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.28);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+    }
+
+    .handle{
+      font-weight:800;
+      letter-spacing:.2px;
+      color: rgba(243,241,236,.92);
+      text-decoration:none;
+      white-space:nowrap;
+    }
+
+    .lang{
+      display:flex;
+      gap: 8px;
+      align-items:center;
+      padding: 6px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.28);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+    }
+
+    .lang button{
+      appearance:none;
+      border:0;
+      background: transparent;
+      color: rgba(243,241,236,.75);
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-weight: 800;
+      letter-spacing: .25px;
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease, color .15s ease;
+    }
+    .lang button[aria-pressed="true"]{
+      background: rgba(192,30,46,.22);
+      color: var(--text);
+      box-shadow: 0 0 0 1px rgba(192,30,46,.25) inset;
+    }
+    .lang button:active{ transform: scale(.98); }
+
+    h1{
+      margin:0;
+      font-family: "Playfair Display", ui-serif, Georgia, serif;
+      font-weight: 700;
+      letter-spacing: .2px;
+      font-size: clamp(34px, 4.6vw, 52px);
+      line-height: 1.02;
+    }
+
+    .subtitle{
+      margin: 8px 0 0 0;
+      color: rgba(243,241,236,.84);
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
+
+    /* STACKED LAYOUT ALWAYS: Profile -> Video -> Links */
+    .content{
+      padding: 18px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .panel{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      overflow:hidden;
+    }
+
+    .panelHeader{
+      padding: 14px 14px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: linear-gradient(180deg, rgba(154,123,92,.16), rgba(255,255,255,.03));
+    }
+
+    .panelHeader .kicker{
+      margin:0;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: rgba(243,241,236,.78);
+      font-weight: 800;
+    }
+
+    .panelBody{ padding: 14px; }
+
+    .bio{
+      background:
+        linear-gradient(180deg, rgba(154,123,92,.14), rgba(255,255,255,.03));
+    }
+
+    .bio p{
+      margin: 0;
+      color: rgba(243,241,236,.88);
+      line-height: 1.65;
+      font-weight: 650;
+      font-size: 14.8px;
+      white-space: pre-line;
+    }
+
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .tag{
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 9px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      color: rgba(243,241,236,.78);
+    }
+
+    .links{
+      display:grid;
+      gap: 12px;
+    }
+
+    .btn{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.10);
+      color: var(--text);
+      text-decoration:none;
+      font-weight: 900;
+      letter-spacing: .2px;
+      transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .btn:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(700px 140px at 25% 0%, rgba(192,30,46,.22), transparent 62%);
+      opacity:0;
+      transition: opacity .18s ease;
+    }
+
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(192,30,46,.36);
+      box-shadow: 0 16px 40px rgba(0,0,0,.40);
+    }
+    .btn:hover:before{ opacity:1; }
+
+    .btn .left{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      position:relative;
+      z-index:1;
+      min-width: 0;
+    }
+
+    .btn .label{
+      overflow:hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .btn .arrow{
+      position:relative;
+      z-index:1;
+      color: rgba(243,241,236,.82);
+      font-weight: 900;
+      flex:none;
+    }
+
+    /* Icons */
+    .ico{
+      width: 20px;
+      height: 20px;
+      display:inline-block;
+      flex:none;
+      color: rgba(243,241,236,.90);
+    }
+    .icoMuted{
+      color: rgba(243,241,236,.86);
+    }
+
+    /* Video embed */
+    .videoFrame{
+      width:100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 18px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.25);
+      box-shadow: 0 16px 50px rgba(0,0,0,.40);
+    }
+
+    .videoFrame iframe{
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
+    }
+
+    footer{
+      padding: 10px 18px 18px;
+      color: rgba(243,241,236,.62);
+      font-weight: 600;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Inline SVG icon set -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="i-instagram" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9A3.5 3.5 0 0 0 20 16.5v-9A3.5 3.5 0 0 0 16.5 4h-9Zm10.25 1.75a1 1 0 1 1 0 2a1 1 0 0 1 0-2ZM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6a3 3 0 0 0 0-6Z"/>
+    </symbol>
+
+    <symbol id="i-file" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M7 2h7l5 5v15a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm7 1.5V8h4.5L14 3.5Z"/>
+    </symbol>
+
+    <symbol id="i-mail" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5v2Z"/>
+    </symbol>
+
+    <symbol id="i-youtube" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.6 4.6 12 4.6 12 4.6s-5.6 0-7.5.5A3 3 0 0 0 2.4 7.2 31 31 0 0 0 2 12a31 31 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.9.5 7.5.5 7.5.5s5.6 0 7.5-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 22 12a31 31 0 0 0-.4-4.8ZM10 15.5v-7l6 3.5-6 3.5Z"/>
+    </symbol>
+  </svg>
+
+  <main class="wrap">
+    <article class="profile" aria-label="Natalia Guerra profile">
+
+      <!-- HERO -->
+      <section class="hero" aria-label="Profile photo">
+        <div class="heroFrame">
+          <img src="profile.jpg" alt="Natalia Guerra at the piano" loading="eager" />
+
+          <div class="topbar">
+            <div class="badge">
+              <svg class="ico" aria-hidden="true"><use href="#i-instagram"></use></svg>
+              <a class="handle" href="https://www.instagram.com/natiguerra.03/" target="_blank" rel="noreferrer">@natiguerra.03</a>
+            </div>
+
+            <div class="lang" aria-label="Language toggle">
+              <button type="button" id="btnEN" aria-pressed="true">EN</button>
+              <button type="button" id="btnES" aria-pressed="false">ES</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Name is now outside the image, so it can't block the photo -->
+        <div class="nameCard" aria-label="Name and title">
+          <h1>Natalia Guerra</h1>
+          <p class="subtitle" id="subtitle">Professional Pianist · Bogotá</p>
+        </div>
+      </section>
+
+      <!-- CONTENT (STACKED ALWAYS) -->
+      <section class="content">
+
+        <!-- PROFILE FIRST -->
+        <section class="panel bio" aria-label="Bio">
+          <div class="panelHeader">
+            <p class="kicker" id="bioKicker">Profile</p>
+          </div>
+          <div class="panelBody">
+            <p id="bioText"></p>
+            <div class="meta" aria-label="Highlights">
+              <span class="tag" id="tag1">Classical</span>
+              <span class="tag" id="tag2">Jazz improv</span>
+              <span class="tag" id="tag3">Showband</span>
+              <span class="tag" id="tag4">C1 English</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIDEO SECTION -->
+        <section class="panel" aria-label="Video">
+          <div class="panelHeader">
+            <p class="kicker" id="videoKicker">Video</p>
+          </div>
+          <div class="panelBody">
+            <div class="videoFrame">
+              <!-- Privacy-enhanced YouTube embed domain -->
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/weABmbzKfh8"
+                title="Natalia Guerra — Video"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+        </section>
+
+        <!-- LINKS LAST -->
+        <section class="panel" aria-label="Links">
+          <div class="panelHeader">
+            <p class="kicker" id="linksKicker">Links</p>
+          </div>
+          <div class="panelBody">
+            <div class="links">
+              <a class="btn" href="https://www.instagram.com/natiguerra.03/" target="_blank" rel="noreferrer">
+                <span class="left">
+                  <svg class="ico icoMuted" aria-hidden="true"><use href="#i-instagram"></use></svg>
+                  <span class="label" id="igText">Instagram</span>
+                </span>
+                <span class="arrow">↗</span>
+              </a>
+
+              <a class="btn" href="#">
+                <span class="left">
+                  <svg class="ico icoMuted" aria-hidden="true"><use href="#i-file"></use></svg>
+                  <span class="label" id="cvText">CV (PDF)</span>
+                </span>
+                <span class="arrow">↗</span>
+              </a>
+
+              <a class="btn" href="mailto:placeholder@natalia-guerra.com?subject=Contact%20/%20Contacto%20—%20Natalia%20Guerra">
+                <span class="left">
+                  <svg class="ico icoMuted" aria-hidden="true"><use href="#i-mail"></use></svg>
+                  <span class="label" id="contactText">Contact / Contacto</span>
+                </span>
+                <span class="arrow">→</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+      </section>
+
+      <!-- Footer kept minimal (removed IG line as requested) -->
+      <footer id="footerLeft">Available for concerts, sessions & collaborations.</footer>
+
+    </article>
+  </main>
+
+  <script>
+    const bioEN =
+`Versatile Colombian pianist combining strong classical technique with jazz improvisation.
+Experienced in high-energy showband performance (150+ repertoire), performing with click tracks/sequences, and adapting to international audiences.
+Disciplined professional with proven leadership skills and C1 English fluency.`;
+
+    const bioES =
+`Pianista colombiana versátil que combina una sólida técnica clásica con improvisación en jazz. 
+Experiencia en showband de alta energía (repertorio 150+), interpretación con click tracks/secuencias y adaptación a audiencias internacionales. 
+Profesional disciplinada con liderazgo comprobado y nivel de inglés C1.`;
+
+    const copy = {
+      en: {
+        subtitle: "Professional Pianist · Bogotá",
+        linksKicker: "Links",
+        bioKicker: "Profile",
+        videoKicker: "Video",
+        ig: "Instagram",
+        cv: "CV (PDF)",
+        contact: "Contact / Contacto",
+        footer: "Available for concerts, sessions & collaborations.",
+        tags: ["Classical", "Jazz improv", "Showband", "C1 English"],
+        bio: bioEN
+      },
+      es: {
+        subtitle: "Pianista profesional · Bogotá",
+        linksKicker: "Enlaces",
+        bioKicker: "Perfil",
+        videoKicker: "Video",
+        ig: "Instagram",
+        cv: "Hoja de vida (PDF)",
+        contact: "Contacto / Contact",
+        footer: "Disponible para conciertos, sesiones y colaboraciones.",
+        tags: ["Clásico", "Impro jazz", "Showband", "Inglés C1"],
+        bio: bioES
+      }
+    };
+
+    const els = {
+      btnEN: document.getElementById("btnEN"),
+      btnES: document.getElementById("btnES"),
+      subtitle: document.getElementById("subtitle"),
+      linksKicker: document.getElementById("linksKicker"),
+      bioKicker: document.getElementById("bioKicker"),
+      videoKicker: document.getElementById("videoKicker"),
+      igText: document.getElementById("igText"),
+      cvText: document.getElementById("cvText"),
+      contactText: document.getElementById("contactText"),
+      footerLeft: document.getElementById("footerLeft"),
+      tag1: document.getElementById("tag1"),
+      tag2: document.getElementById("tag2"),
+      tag3: document.getElementById("tag3"),
+      tag4: document.getElementById("tag4"),
+      bioText: document.getElementById("bioText"),
+    };
+
+    function setLang(lang){
+      const d = copy[lang];
+      document.documentElement.lang = lang;
+      els.subtitle.textContent = d.subtitle;
+      els.linksKicker.textContent = d.linksKicker;
+      els.bioKicker.textContent = d.bioKicker;
+      els.videoKicker.textContent = d.videoKicker;
+      els.igText.textContent = d.ig;
+      els.cvText.textContent = d.cv;
+      els.contactText.textContent = d.contact;
+      els.footerLeft.textContent = d.footer;
+
+      els.tag1.textContent = d.tags[0];
+      els.tag2.textContent = d.tags[1];
+      els.tag3.textContent = d.tags[2];
+      els.tag4.textContent = d.tags[3];
+
+      els.bioText.textContent = d.bio;
+
+      els.btnEN.setAttribute("aria-pressed", String(lang === "en"));
+      els.btnES.setAttribute("aria-pressed", String(lang === "es"));
+    }
+
+    els.btnEN.addEventListener("click", () => setLang("en"));
+    els.btnES.addEventListener("click", () => setLang("es"));
+
+    setLang("en");
+  </script>
+</body>
+</html>
