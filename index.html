@@ -616,6 +616,16 @@ const copy = {
       videoKicker: document.getElementById("videoKicker"),
       igText: document.getElementById("igText"),
       ytText: document.getElementById("ytText"),
+      cvText: document.getElementById("cvText"),
+      cvLink: document.getElementById("cvLink"),
+      contactText: document.getElementById("contactText"),
+      contactLink: document.getElementById("contactLink"),
+      footerLeft: document.getElementById("footerLeft"),
+      tag1: document.getElementById("tag1"),
+      tag2: document.getElementById("tag2"),
+      tag3: document.getElementById("tag3"),
+      tag4: document.getElementById("tag4"),
+      bioText: document.getElementById("bioText")
     };
 
       function setLang(lang){
@@ -668,12 +678,6 @@ const copy = {
 
     // Set language based on user's preference
     setLang(detectLanguage());
-
-    // Temporary debug output
-    const debugFooter = document.getElementById('footerLeft');
-    if (debugFooter) {
-      debugFooter.textContent += ` | Debug: L=${navigator.languages}, l=${navigator.language}, u=${navigator.userLanguage}`;
-    }
   </script>
 </body>
 </html>
