@@ -111,6 +111,7 @@
       position:relative;
       border-radius: calc(var(--radius) + 2px);
       overflow:hidden;
+      height: min(72vh, 620px);
       border: 1px solid rgba(255,255,255,.10);
       background:
         radial-gradient(900px 520px at 15% 0%, rgba(192,30,46,.20), transparent 60%),
@@ -122,8 +123,8 @@
     /* Keep the entire portrait visible: contain (no cropping) */
     .heroFrame img{
       width: 100%;
-      height: min(72vh, 620px);
-      object-fit: contain;
+      height: 100%;
+      object-fit: cover;
       display:block;
       background: #0b0c10;
     }

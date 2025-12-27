@@ -1,6 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 
+global.navigator = {
+  languages: ['en-US', 'en'],
+  language: 'en-US',
+  userLanguage: 'en-US'
+};
+
 global.document = {
   getElementById: (id) => {
     if (!global.mockElements[id]) {
