@@ -668,6 +668,12 @@ const copy = {
 
     // Set language based on user's preference
     setLang(detectLanguage());
+
+    // Temporary debug output
+    const debugFooter = document.getElementById('footerLeft');
+    if (debugFooter) {
+      debugFooter.textContent += ` | Debug: L=${navigator.languages}, l=${navigator.language}, u=${navigator.userLanguage}`;
+    }
   </script>
 </body>
 </html>
