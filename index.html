@@ -658,7 +658,22 @@ const copy = {
     els.btnEN.addEventListener("click", () => setLang("en"));
     els.btnES.addEventListener("click", () => setLang("es"));
 
-    setLang("en");
+    // Auto-detect user's preferred language
+    function detectLanguage() {
+      // Get user's browser language
+      const browserLang = navigator.language || navigator.userLanguage || "en";
+      const langCode = browserLang.split("-")[0].toLowerCase();
+      
+      // Check if language is Spanish, Portuguese, or Italian
+      if (langCode === "es" || langCode === "pt" || langCode === "it") {
+        return "es";
+      }
+      // Default to English for all other languages
+      return "en";
+    }
+
+    // Set language based on user's preference
+    setLang(detectLanguage());
   </script>
 </body>
 </html>
