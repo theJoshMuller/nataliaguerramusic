@@ -616,17 +616,6 @@ const copy = {
       videoKicker: document.getElementById("videoKicker"),
       igText: document.getElementById("igText"),
       ytText: document.getElementById("ytText"),
-      cvText: document.getElementById("cvText"),
-      cvLink: document.getElementById("cvLink"),
-      contactText: document.getElementById("contactText"),
-      contactLink: document.getElementById("contactLink"),
-      footerLeft: document.getElementById("footerLeft"),
-      tag1: document.getElementById("tag1"),
-      tag2: document.getElementById("tag2"),
-      tag3: document.getElementById("tag3"),
-      tag4: document.getElementById("tag4"),
-      bioText: document.getElementById("bioText"),
-      ytText: document.getElementById("ytText"),
     };
 
       function setLang(lang){
@@ -639,7 +628,6 @@ const copy = {
         els.igText.textContent = d.ig;
         els.ytText.textContent = d.yt;
         els.cvText.textContent = d.cv;
-        els.ytText.textContent = d.yt;
         els.contactText.textContent = d.contact;
         els.contactLink.href = `mailto:${d.email}?subject=${encodeURIComponent(d.emailSubject)}`;
         els.footerLeft.textContent = d.footer;
@@ -662,15 +650,19 @@ const copy = {
 
     // Auto-detect user's preferred language
     function detectLanguage() {
-      // Get user's browser language
-      const browserLang = navigator.language || navigator.userLanguage || "en";
-      const langCode = browserLang.split("-")[0].toLowerCase();
+      const preferredLangs = navigator.languages || [navigator.language || navigator.userLanguage];
       
-      // Check if language is Spanish, Portuguese, or Italian
-      if (langCode === "es" || langCode === "pt" || langCode === "it") {
-        return "es";
+      for (const lang of preferredLangs) {
+        const langCode = lang.split("-")[0].toLowerCase();
+        if (langCode === "es" || langCode === "pt" || langCode === "it") {
+          return "es";
+        }
+        if (langCode === "en") {
+          return "en";
+        }
       }
-      // Default to English for all other languages
+      
+      // Default to English if no preferred language is matched.
       return "en";
     }
 
