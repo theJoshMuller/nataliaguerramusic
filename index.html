@@ -562,8 +562,6 @@
     </article>
   </main>
 
-  <div id="debug-info" style="position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.8); color: white; padding: 8px; font-family: monospace; font-size: 12px; z-index: 10000;"></div>
-
   <script>
     const bioEN =
 `Versatile Colombian keyboardist with a strong classical piano foundation and jazz improvisation, specializing in rock, pop, and fusion.
@@ -680,19 +678,7 @@ const copy = {
     }
 
     // Set language based on user's preference
-    const detectedLang = detectLanguage();
-    setLang(detectedLang);
-
-    // Populate debug footer
-    const debugData = {
-      "navigator.languages": JSON.stringify(navigator.languages),
-      "navigator.language": navigator.language,
-      "navigator.userLanguage": navigator.userLanguage,
-      "Preferred Langs Used": JSON.stringify(navigator.languages || [navigator.language || navigator.userLanguage]),
-      "Detected Language": detectedLang
-    };
-    const debugInfoDiv = document.getElementById("debug-info");
-    debugInfoDiv.innerHTML = Object.entries(debugData).map(([key, value]) => `<strong>${key}:</strong> ${value}`).join('<br>');
+    setLang(detectLanguage());
   </script>
 </body>
 </html>
