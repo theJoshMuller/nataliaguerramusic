@@ -387,6 +387,10 @@
     <symbol id="i-web" viewBox="0 0 24 24">
       <path fill="currentColor" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10Zm-1.5-5l-1.414-1.414L10.586 14H6V7h7v2.5H9.5v3h2.914l-1.5 1.5L10.5 12.5l.414.414L12 14l1.086-1.086L13.5 12.5 14.914 14 13.5 15.5l-1.086 1.086L12 16.172l-.414.414L10.5 15.5Z"/>
     </symbol>
+    
+    <symbol id="i-youtube" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.6 4.6 12 4.6 12 4.6s-5.6 0-7.5.5A3 3 0 0 0 2.4 7.2 31 31 0 0 0 2 12a31 31 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.9.5 7.5.5 7.5.5s5.6 0 7.5-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 22 12a31 31 0 0 0-.4-4.8ZM10 15.5v-7l6 3.5-6 3.5Z"/>
+    </symbol>
   </svg>
 
   <main class="wrap">
@@ -571,6 +575,7 @@ const copy = {
       tag3: document.getElementById("tag3"),
       tag4: document.getElementById("tag4"),
       bioText: document.getElementById("bioText"),
+      ytText: document.getElementById("ytText"),
     };
 
       function setLang(lang){
@@ -583,6 +588,7 @@ const copy = {
         els.igText.textContent = d.ig;
         els.ytText.textContent = d.yt;
         els.cvText.textContent = d.cv;
+        els.ytText.textContent = d.yt;
         els.contactText.textContent = d.contact;
         els.contactLink.href = `mailto:${d.email}?subject=${encodeURIComponent(d.emailSubject)}`;
         els.footerLeft.textContent = d.footer;
